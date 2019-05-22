@@ -4,8 +4,8 @@ from app import app
 # Views
 @app.route('/')
 def index():
-
-    return render_template('index.html')
+    message = 'Welcome to your favorite News Channel'
+    return render_template('index.html',message=message)
 
 
 
