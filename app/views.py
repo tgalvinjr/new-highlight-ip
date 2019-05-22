@@ -5,7 +5,8 @@ from app import app
 @app.route('/') #homepage route
 def index():
     message = 'Welcome to your favorite News Channel'
-    return render_template('index.html', message=message)
+    title = 'Taarifa za Habari'
+    return render_template('index.html', message=message, title=title)
 
 
 
