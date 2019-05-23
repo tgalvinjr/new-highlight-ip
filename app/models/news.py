@@ -5,3 +5,5 @@ class News:
         self.description = description
         self.url = url
         
+# class Articles:
+#     def __init__(self, ):
