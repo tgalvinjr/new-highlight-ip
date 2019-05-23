@@ -14,6 +14,18 @@
 
 <body>
     <h1> {{ message }} </h1>
+    <!-- NEWS HOME -->
+    <h2>Trending News</h2>
+    <ul>
+        {% for news in current_news %}
+            <li>{{ current_news.id }}</li>
+            <li>{{ current_news.name }}</li>
+            <li>{{ current_news.description }}</li>
+            <li>{{ current_news.url }}</li>
+
+        {% endfor %}
+        
+    </ul>
 </body>
 
 </html>
