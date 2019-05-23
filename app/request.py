@@ -12,20 +12,20 @@ def get_news():
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
         get_news_response = json.loads(get_news_data)
-        # print(get_news_data)
+        # print(get_news_response)
 
         news_results = None
 
         if get_news_response['sources']:
             news_results_list = get_news_response['sources']
             news_results = process_results(news_results_list)
-            print(news_results)
+            # print(news_results)
 
-        return news_results
+    return news_results
 
-def process_results(news_results_list):
+def process_results(news_list):
     news_results = []
-    for news_item in news_results_list:
+    for news_item in news_list:
         id = news_item.get('id')
         name = news_item.get('name')
         description = news_item.get('description')
@@ -37,7 +37,7 @@ def process_results(news_results_list):
         
 
         news_results.append(news_object)
-        print(news_results)
+        # print(news_results)
 
     return news_results
 

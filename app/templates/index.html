@@ -1,31 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {% if title %}
-    <title>{{ title }}</title>
-    {% else %}
-    <title>Welcome to your favorite News App</title>
-    {% endif %}
-</head>
-
-<body>
+{% extends 'base.html' %}
+{% block content %}
     <h1> {{ message }} </h1>
     <!-- NEWS HOME -->
     <h2>Trending News</h2>
     <ul>
         {% for news in current_news %}
-            <li>{{ current_news.id }}</li>
-            <li>{{ current_news.name }}</li>
-            <li>{{ current_news.description }}</li>
-            <li>{{ current_news.url }}</li>
+            <li>{{ news.id }}</li>
+            <li>{{ news.name }}</li>
+            <li>{{ news.description }}</li>
+            <li>{{ news.url }}</li>
 
         {% endfor %}
         
     </ul>
-</body>
-
-</html>
+{% endblock %}
