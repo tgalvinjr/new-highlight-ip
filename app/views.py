@@ -20,3 +20,4 @@ def news_article(id):
     
     articles = get_articles(id)
     return render_template('news_article.html',articles=articles) 
+
