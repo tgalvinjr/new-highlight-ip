@@ -1,11 +1,12 @@
-from flask import render_template
+from flask import render_template,request,redirect,url_for
+from . import main
 from app import app
-from .request import get_news, get_articles
-from .models.news import News, Articles
+from ..request import get_news, get_articles
+from ..models.news import News, Articles
 
 
 # Views
-@app.route('/') #homepage route
+@main.route('/') #homepage route
 def index():
     message = 'Welcome to your favorite News Channel'
     title = 'Taarifa za Habari'
@@ -15,7 +16,7 @@ def index():
 
 
 
-@app.route('/news_article/<id>') #news article route
+@main.route('/news_article/<id>') #news article route
 def news_article(id):
     
     articles = get_articles(id)

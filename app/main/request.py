@@ -1,14 +1,22 @@
 from app import app
-import urllib.request,json
-from .models import news
-News = news.News
-Articles = news.Articles
+import urllib.request
+import json
+from models import News, Articles
 
+api_key = None
 news_url = None
+base_url = None
 
-api_key = app.config ['NEWS_API_KEY']
+
+api_key = app.config['NEWS_API_KEY']
 base_url = app.config["NEWS_API_BASE_URL"]
 articles_base_url = app.config["ARTICLES_API_BASE_URL"]
+
+
+def configure_request(app):
+    global api_key, base_url
+    api_key = app.config['NEWS_API_KEY']
+    base_url = app.config["NEWS_API_BASE_URL"]
 
 
 def get_news():
@@ -27,6 +35,7 @@ def get_news():
 
     return news_results
 
+
 def process_results(news_list):
     news_results = []
     for news_item in news_list:
@@ -34,31 +43,29 @@ def process_results(news_list):
         name = news_item.get('name')
         description = news_item.get('description')
         url = news_item.get('url')
-        
 
         news_object = News(id, name, description, url)
-
-        
 
         news_results.append(news_object)
         # print(news_results)
 
     return news_results
 
+
 def get_articles(id):
-    get_articles_url = articles_base_url.format(id,api_key)
+    get_articles_url = articles_base_url.format(id, api_key)
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
         get_articles_response = json.loads(get_articles_data)
-        
+
         articles_results = None
 
         if get_articles_response['articles']:
             articles_results_list = get_articles_response['articles']
             articles_results = process_articles_results(articles_results_list)
-           
 
     return articles_results
+
 
 def process_articles_results(articles_list):
     articles_results = []
@@ -70,13 +77,10 @@ def process_articles_results(articles_list):
         content = articles_item.get('content')
         description = articles_item.get('description')
         url = articles_item.get('url')
-        
 
-        articles_object = Articles(title, author, urlToImage, publishedAt, content, description, url)
-
-        
+        articles_object = Articles(
+            title, author, urlToImage, publishedAt, content, description, url)
 
         articles_results.append(articles_object)
-       
 
     return articles_results
