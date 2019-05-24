@@ -5,8 +5,7 @@
     <h2>Trending News</h2>
     <ul>
         {% for news in current_news %}
-            <li>{{ news.id }}</li>
-            <li>{{ news.name }}</li>
+            <a href="/news_article/{{ news.id }}">{{ news.name }}</a>
             <li>{{ news.description }}</li>
             <li>{{ news.url }}</li>
 
