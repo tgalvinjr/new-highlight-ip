@@ -7,8 +7,11 @@ class News:
 
 
 class Articles:
-    def __init__(self, author, title, urlToImage, publishedAt):
+    def __init__(self, author, title, urlToImage, publishedAt, content, description, url):
         self.author = author
         self.title = title
         self.urlToImage = urlToImage
         self.publishedAt = publishedAt
+        self.content = content
+        self.description = description
+        self.url = url

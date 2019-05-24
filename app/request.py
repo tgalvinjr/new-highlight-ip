@@ -67,9 +67,12 @@ def process_articles_results(articles_list):
         author = articles_item.get('author')
         publishedAt = articles_item.get('publishedAt')
         urlToImage = articles_item.get('urlToImage')
+        content = articles_item.get('content')
+        description = articles_item.get('description')
+        url = articles_item.get('url')
         
 
-        articles_object = Articles(title, author, urlToImage, publishedAt)
+        articles_object = Articles(title, author, urlToImage, publishedAt, content, description, url)
 
         
 
