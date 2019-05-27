@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for article in articles %}
+<div class="container">
+
+        <div class="row">
+                <br>
+              </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ article.urlToImage }}" alt="{{ article.description | truncate }}" class="img-responsive">
+        </div>
+
+        <div class="col-md-6">
+                <div class="card">
+                        <div class="view overlay">
+                                <h2 class="card-header-title mb-2">{{article.title}}</h2>
+                           
+                            <a>
+                              <div class="mask rgba-white-slight"></div>
+                            </a>
+                          </div>
+                      <div class="card-body  dark-text rounded-bottom">
+                        <a class="activator waves-effect mr-2"><i class="fas fa-share-alt white-text"></i></a>
+                        <p class="card-title"> {{ article.description}}<p>
+                        <hr class="hr-light">
+                        {{ article.content }}
+                        <a href="{{ article.url}}" target="_blank" class="btn btn primary">Read More</a>
+                        <p>Posted: {{ article.publishedAt}}</p>
+            
+                      </div>
+                    </div>
+        
+        </div>
+
+    </div>
+
+    <div class="row">
+      <br>
+    </div>
+
+</div>
+
+
+
+{% endfor %}
+{% endblock %}

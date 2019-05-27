@@ -1,9 +1,8 @@
 import unittest
-from .models import news
-News = news.News
-Articles = news.Articles
 from app.models import News,Articles
 
+# News = news.News
+# Articles = news.Articles
 
 class NewsTest (unittest.TestCase):
 
@@ -17,7 +16,7 @@ class NewsTest (unittest.TestCase):
 class ArticlesTest (unittest.TestCase):
 
     def setUp(self):
-        self.new_article = Articles('author', 'title', 'urlToImage', 'publishedAt')
+        self.new_article = Articles('author', 'title', 'urlToImage', 'publishedAt','content','description', 'url' )
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_article, Articles))
